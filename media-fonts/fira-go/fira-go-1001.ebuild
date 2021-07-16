@@ -32,7 +32,7 @@ src_install() {
 	use otf && { FONT_S="${S}/Fonts/FiraGO_OTF_${PV}"; FONT_SUFFIX="otf"; }
 	use ttf && { FONT_S="${S}/Fonts/FiraGO_TTF_${PV}"; FONT_SUFFIX="ttf"; }
 
-	find "${FONT_S}" -type f -exec mv {} "${FONT_S}" \; || exit 1
+	find "${FONT_S}" -type f -exec mv {} "${FONT_S}" \; || die 1
 
 	font_src_install
 	einstalldocs
