@@ -1,0 +1,17 @@
+diff --git a/Makefile b/Makefile
+index 439a63d..8bd673e 100644
+--- a/Makefile
++++ b/Makefile
+@@ -5,3 +5,12 @@ gspca_kinect2-objs += kinect2.o
+ 
+ obj-m += gspca_main.o
+ gspca_main-objs += gspca.o
++
++ifneq ($(KERNEL_DIR),)
++KERNELDIR = $(KERNEL_DIR)
++endif
++
++KERNELDIR ?= /lib/modules/$(shell uname -r)/build
++
++.DEFAULT:
++	$(MAKE) -C $(KERNELDIR) M=$(PWD) $@
